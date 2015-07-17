@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using MVCForum.Domain.Constants;
 using MVCForum.Domain.Interfaces.Services;
@@ -26,14 +27,21 @@ namespace MVCForum.Website.Controllers
         {
             var viewModel = new MainStatsViewModel
                                 {
-                                    LatestMembers = MembershipService.GetLatestUsers(10).ToDictionary(o => o.UserName,
-                                                                                                      o => o.NiceUrl),
                                     MemberCount = MembershipService.MemberCount(),
                                     TopicCount = _topicService.TopicCount(),
                                     PostCount = _postService.PostCount()
                                 };
+
+            viewModel.LatestMembers = new System.Collections.Generic.List<System.Tuple<string, string>>();
+            foreach (var user in MembershipService.GetLatestUsers(10))
+            {
+                if (viewModel.LatestMembers.All(u => u.Item1 != user.UserName))
+                {
+                    viewModel.LatestMembers.Add(new Tuple<string, string>(user.UserName,user.NiceUrl));
+                }
+            }
+
             return PartialView(viewModel);
         }
-
     }
 }

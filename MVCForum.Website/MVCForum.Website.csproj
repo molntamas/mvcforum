@@ -382,9 +382,6 @@
     <Compile Include="Areas\Admin\ViewModels\SettingsViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\LogFile.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="App_Data\lucene_index\NotHere.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

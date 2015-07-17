@@ -10,6 +10,6 @@ namespace MVCForum.Website.ViewModels
         public int PostCount { get; set; }
         public int TopicCount { get; set; }
         public int MemberCount { get; set; }
-        public Dictionary<string, string> LatestMembers { get; set; }
+        public List<Tuple<string, string>> LatestMembers { get; set; }
     }
 }

@@ -6,7 +6,7 @@
             <li class="latestmemberheading">@Html.LanguageString("Stats.LatestMembers")</li>
             @foreach (var user in Model.LatestMembers)
             {
-                <li><a href="@user.Value">@Html.Raw(user.Key)</a></li>
+                <li><a href="@user.Item2">@Html.Raw(user.Item1)</a></li>
             }
         </ul>
     </div>
